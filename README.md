@@ -13,4 +13,8 @@ Signalr 1.2.2 per Nuget
 
 Material Design Lite per npm -install material-design-lite
 
+Ich freue mich über Tweets, Facebook posts oder sonstiges social media sharing (Vortrag und Content)
+
+
+
 
