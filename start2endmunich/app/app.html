@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+
+       <link href="../node_modules/material-design-lite/material.css" rel="stylesheet" />
+    <script src="../node_modules/material-design-lite/material.js"></script><script src="../Scripts/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="../Scripts/angular.js"></script>
+    <script src="../Scripts/angular-resource.js"></script>
+    <script src="app.js"></script>
+
+    <script src="trainingFactory.js"></script>
+    <script src="trainingController.js"></script>
+    <script src="../Scripts/jquery.signalR-2.2.0.js"></script>
+    <script src="/signalr/hubs"></script>
+ 
+</head>
+<body ng-app="App" ng-controller="trainingController"
+      class="mdl-color--grey-100 mdl-color-text--grey-700">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">ppedv</span>
+                <div class="mdl-layout-spacer"></div>
+
+
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                    mdl-textfield--floating-label mdl-textfield--align-right">
+                    <label class="mdl-button mdl-js-button mdl-button--icon"
+                           for="textinput">
+                        <i class="material-icons">search</i>
+                    </label>
+                    <div class="mdl-textfield__expandable-holder">
+                        <input class="mdl-textfield__input" type="text"
+                               ng-model="suche"
+                               id="textinput" placeholder="suche" />
+                    </div>
+                </div>
+           
+
+
+            </div>
+        </header>
+
+        <main class="mdl-layout__content">
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--6-col">
+                    <div class="mdl-card mdl-shadow--8dp">
+                        <div class="mdl-card__title">
+                            <h2>add Training</h2>
+
+                        </div>
+                        <div class="mdl-card__supporting-text mdl-grid">
+                            <form>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" id="name1" 
+                                           ng-model="vm.name"
+                                           />
+                                    <label class="mdl-textfield__label" for="name1">Name</label>
+
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" id="datum" ng-model="vm.datum" />
+                                    <label class="mdl-textfield__label" for="datum">datum</label>
+
+                                </div>
+                                <button ng-click="save(vm)"
+                                        
+                                        class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">save</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--6-col">
+                    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--4dp">
+                        <thead>
+                            <tr>
+                                <th class="mdl-data-table__cell--non-numeric">Kurs</th>
+                                <th>Datum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="t in trainings | filter:suche">
+                                <td class="mdl-data-table__cell--non-numeric">{{t.name}}</td>
+                                <td>{{t.datum | date:'dd MMM yyyy'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+       
+
+
+                </div>
+            </div>
+        </main>
+    </div>
+    <script> componentHandler.upgradeAllRegistered();</script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+@Imports start2endmunich.Areas.HelpPage.ModelDescriptions
+@ModelType SimpleTypeModelDescription
+@Model.Documentation
